@@ -19,7 +19,7 @@ public class CategoryController {
     public ArrayList<Category> listCategories(){
         ArrayList<Category> all = (ArrayList<Category>) categoryRepository.findAll();
 
-       return all;
+        return all;
     }
 
     @RequestMapping(value = "/list/search", method = RequestMethod.GET)
