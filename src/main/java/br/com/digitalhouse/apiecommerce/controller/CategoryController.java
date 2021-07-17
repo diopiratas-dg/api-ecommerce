@@ -1,22 +1,37 @@
 package br.com.digitalhouse.apiecommerce.controller;
 
 import br.com.digitalhouse.apiecommerce.model.Category;
-import br.com.digitalhouse.apiecommerce.model.Database;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.digitalhouse.apiecommerce.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
 
-    @RequestMapping("/list")
-    public ArrayList<Category> listCategories(){
-        Database db = new Database();
-        ArrayList<Category> persistedCategories = db.getCategories();
+    @Autowired
+    CategoryRepository categoryRepository;
 
-       return persistedCategories;
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ArrayList<Category> listCategories(){
+        ArrayList<Category> all = (ArrayList<Category>) categoryRepository.findAll();
+
+       return all;
+    }
+
+    @RequestMapping(value = "/list/search", method = RequestMethod.GET)
+    public Category listById(@RequestParam Integer id){
+        Optional<Category> category = categoryRepository.findById(id);
+
+        return category.get();
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void addCategory(@RequestBody Category ct){
+        categoryRepository.save(ct);
     }
 
 

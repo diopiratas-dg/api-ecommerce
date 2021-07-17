@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 
 public class Database {
-    private Statement executorQuery;
-    private Connection conn;
+    protected Statement executorQuery;
+    protected Connection conn;
 
     public Database() {
         try {
@@ -24,23 +24,5 @@ public class Database {
             //TODO: handle exception
             System.out.println(e.getMessage());
         }
-    }
-
-    public ArrayList<Category> getCategories() {
-        ArrayList listaCategoria = new ArrayList<Category>();
-        ResultSet resultado;
-        try {
-            resultado = this.executorQuery.executeQuery("SELECT * from categoria");
-
-            while(resultado.next()){
-                Category categoria = new Category(resultado.getString("id"),
-                        resultado.getString("descricao"));
-                listaCategoria.add(categoria);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return listaCategoria;
     }
 }
