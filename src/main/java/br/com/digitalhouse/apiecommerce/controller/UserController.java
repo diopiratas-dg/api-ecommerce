@@ -3,7 +3,6 @@ package br.com.digitalhouse.apiecommerce.controller;
 import br.com.digitalhouse.apiecommerce.model.User;
 import br.com.digitalhouse.apiecommerce.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

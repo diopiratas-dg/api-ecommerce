@@ -1,0 +1,2 @@
+ALTER TABLE `usuarios` CHANGE `idUsuario` `id_usuario` INT(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuarios` CHANGE `data_admissao` `data_admissao` DATE NULL, CHANGE `salario` `salario` DECIMAL(10,2) NULL;
