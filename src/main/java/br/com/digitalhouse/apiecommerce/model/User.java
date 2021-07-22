@@ -8,15 +8,15 @@ import java.sql.Date;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @Column(nullable = false, name = "nome")
+    @Column(name = "nome")
     private String username;
 
-    @Column(nullable = false, name = "data_admissao")
+    @Column(name = "data_admissao")
     private Date dataAdmissao;
 
-    @Column(nullable = false)
     private String salario;
 
     @Column(nullable = false)
