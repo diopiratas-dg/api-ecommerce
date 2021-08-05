@@ -40,7 +40,7 @@ public class CategoryController {
         return all;
     }
     @ApiOperation(
-            value = "Busca Categoria por ID")
+            value = "Buscar categoria por ID")
     @RequestMapping(value = "/list/search", method = RequestMethod.GET)
     public Category listById(@RequestParam Integer id){
         Optional<Category> category = categoryRepository.findById(id);
@@ -48,6 +48,8 @@ public class CategoryController {
         return category.get();
     }
 
+    @ApiOperation(
+            value = "Adicionar categoria")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void addCategory(@RequestBody Category ct){
         categoryRepository.save(ct);
