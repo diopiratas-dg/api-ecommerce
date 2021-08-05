@@ -1,4 +1,4 @@
-package br.com.digitalhouse.apiecommerce.controller;
+package br.com.digitalhouse.apiecommerce.loggedcontroller;
 
 import br.com.digitalhouse.apiecommerce.model.User;
 import br.com.digitalhouse.apiecommerce.repository.UserRepository;

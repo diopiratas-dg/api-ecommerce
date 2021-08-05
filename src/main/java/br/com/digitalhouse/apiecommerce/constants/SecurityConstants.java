@@ -7,6 +7,7 @@ public class SecurityConstants {
             "**/swagger-resources/**",
             "/swagger-ui.html",
             "/webjars/**",
+            "/api/**"
 
     };
     public static final String KEY = "q3t6w9z$C&F)J@NcQfTjWnZr4u7x!A%D*G-KaPdSgUkXp2s5v8y/B?E(H+MbQeTh";

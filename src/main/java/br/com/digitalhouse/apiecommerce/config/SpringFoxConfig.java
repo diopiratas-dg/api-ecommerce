@@ -7,12 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
-import springfox.documentation.service.SecurityReference;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -33,11 +31,11 @@ public class SpringFoxConfig {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .pathMapping("/")
-                .apiInfo(ApiInfo.DEFAULT)
+                .apiInfo(apiInfo())
                 .genericModelSubstitutes(ResponseEntity.class)
                 .ignoredParameterTypes(java.sql.Date.class)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("br.com.digitalhouse.apiecommerce.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securityContexts(Lists.newArrayList(securityContext()))
@@ -47,6 +45,13 @@ public class SpringFoxConfig {
 
     private ApiKey apiKey() {
         return new ApiKey("JWT", AUTHORIZATION_HEADER, "header");
+    }
+
+    private ApiInfo apiInfo(){
+        return new ApiInfoBuilder().title("API ECommerce Digital House")
+                .description("API para exercicio de busca de ecommerce DH")
+                .version("1.0.0").
+                build();
     }
 
     private SecurityContext securityContext() {
