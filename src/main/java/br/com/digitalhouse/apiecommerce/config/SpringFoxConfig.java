@@ -16,15 +16,17 @@ import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
 @Configuration
+@EnableSwagger2
 @Import(springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration.class)
 public class SpringFoxConfig {
 
     public static final String AUTHORIZATION_HEADER = "Authorization";
-    public static final String DEFAULT_INCLUDE_PATTERN = "/.*";
+    public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
     private final Logger log = LoggerFactory.getLogger(SpringFoxConfig.class);
 
     @Bean
